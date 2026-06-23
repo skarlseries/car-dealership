@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class="light" lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoPremium | Найдите свой идеальный Luxury Performance</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass-card {
+            background: rgba(26, 26, 26, 0.8);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <span class="material-symbols-outlined">directions_car</span>
+                AutoPremium
+            </div>
+            <nav class="main-nav">
+                <a href="index.html" class="active">Главная</a>
+                <a href="catalog.html">Каталог</a>
+                <a href="test-drive.html">Тест-драйв</a>
+                <a href="dashboard.html">Админ</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggle" class="btn btn-secondary btn-sm" style="padding: 8px; border-radius: 50%; width: 40px; height: 40px;">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+                <a href="login.html" class="btn btn-primary btn-sm">Войти</a>
+                <button class="mobile-menu-btn" aria-label="Меню">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu-overlay"></div>
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <span class="logo" style="font-size: 20px;">AutoPremium</span>
+            <button class="mobile-menu-close">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <nav class="mobile-menu-links">
+            <a href="index.html" class="active">Главная</a>
+            <a href="catalog.html">Каталог</a>
+            <a href="test-drive.html">Тест-драйв</a>
+            <a href="dashboard.html">Админ-панель</a>
+            <hr style="border-color: rgba(26, 28, 28, 0.06); margin: 8px 0;">
+            <a href="login.html">Войти</a>
+            <a href="register.html">Регистрация</a>
+        </nav>
+    </div>
+
+    <section class="hero">
+        <div class="hero-background">
+            <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1920&h=1080&fit=crop&crop=center&auto=format" alt="Luxury car showroom">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container" style="position: relative; z-index: 2; width: 100%;">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Найдите свой идеальный<br>
+                    <span>Luxury Performance</span>
+                </h1>
+                <p class="hero-description">
+                    Испытайте передовую автомобильную инженерию, где каждая деталь 
+                    спроектирована для максимального контроля и комфорта.
+                </p>
+                <div class="hero-search">
+                    <input type="text" placeholder="Марка, модель или серия...">
+                    <a href="catalog.html" class="btn btn-primary">Перейти в каталог</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-surface);">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><span class="material-symbols-outlined">speed</span></div>
+                    <h3 class="feature-title">Тест-драйв без границ</h3>
+                    <p class="feature-description">Почувствуйте мощь и управляемость на специально подготовленных треках.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><span class="material-symbols-outlined">verified</span></div>
+                    <h3 class="feature-title">Гарантия лучшей цены</h3>
+                    <p class="feature-description">Мы предлагаем эксклюзивные условия напрямую от производителей мирового уровня.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><span class="material-symbols-outlined">build</span></div>
+                    <h3 class="feature-title">Сервис включён</h3>
+                    <p class="feature-description">Полное техническое сопровождение и премиальная консьерж-служба 24/7.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: var(--color-primary-container); color: white; padding: 60px 0;">
+        <div class="container text-center">
+            <h2 style="font-family: var(--font-heading); font-size: 32px; font-weight: 700; margin-bottom: 16px; color: white;">
+                Почувствуйте драйв уже сегодня
+            </h2>
+            <p style="font-size: 18px; color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto 32px;">
+                Запишитесь на тест-драйв любой модели из нашего каталога и откройте 
+                новую главу своего водительского опыта.
+            </p>
+            <a href="test-drive.html" class="btn" style="background: white; color: var(--color-primary-container); padding: 16px 48px; font-size: 16px;">
+                Записаться на тест-драйв
+            </a>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">AutoPremium</div>
+                    <p>High-End Engineering. Совершенство в каждом повороте.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Продукция</h4>
+                    <div class="footer-links">
+                        <a href="catalog.html">Каталог</a>
+                        <a href="test-drive.html">Тест-драйв</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Компания</h4>
+                    <div class="footer-links">
+                        <a href="#">Контакты</a>
+                        <a href="#">Правовая информация</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Поддержка</h4>
+                    <div class="footer-links">
+                        <a href="#">Политика конфиденциальности</a>
+                        <a href="#">Настройки Cookie</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">© 2024 AutoPremium. High-End Engineering.</div>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

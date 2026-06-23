@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="light" lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали автомобиля - AutoPremium</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+    <style>
+        .thumb-active { border-color: var(--color-primary) !important; opacity: 1 !important; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <span class="material-symbols-outlined">directions_car</span>
+                AutoPremium
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Главная</a>
+                <a href="catalog.html" class="active">Каталог</a>
+                <a href="test-drive.html">Тест-драйв</a>
+                <a href="dashboard.html">Админ</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggle" class="btn btn-secondary btn-sm" style="padding: 8px;"><span class="material-symbols-outlined" style="font-size: 20px;">dark_mode</span></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container" id="carDetailContainer" style="padding: 40px 0 80px;">
+            <div style="text-align: center; color: var(--text-secondary); padding: 60px 0;">Загрузка информации об автомобиле...</div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">AutoPremium</div>
+                    <p>High-End Engineering. Совершенство в каждом повороте.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Каталог</h4>
+                    <div class="footer-links">
+                        <a href="catalog.html">Все автомобили</a>
+                        <a href="catalog.html?status=В наличии">В наличии</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Услуги</h4>
+                    <div class="footer-links">
+                        <a href="test-drive.html">Тест-драйв в Москве</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Контакты</h4>
+                    <div class="footer-links">
+                        <span style="display: flex; align-items: center; gap: 8px;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">location_on</span>
+                            Москва, Кутузовский пр-т, 1
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">© 2024 AutoPremium. Инженерия высшего класса.</div>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/api.js"></script>
+    <script>
+        function normalizeCar(car) {
+            if (!car) return null;
+            return {
+                ...car,
+                desc: car.description || car.desc || 'Описание готовится к публикации.',
+                specs: car.engine || car.specs || 'Уточняйте характеристики в автосалоне.'
+            };
+        }
+
+        function renderCarDetail(car) {
+            const container = document.getElementById('carDetailContainer');
+            if (!car) {
+                container.innerHTML = '<div class="alert alert-error">Автомобиль не найден.</div>';
+                return;
+            }
+
+            let imagesArray = [];
+            if (Array.isArray(car.images)) {
+                imagesArray = car.images;
+            } else if (typeof car.images === 'string' && car.images.trim()) {
+                try {
+                    imagesArray = JSON.parse(car.images);
+                } catch(e) {
+                    imagesArray = car.images.split(',').map(img => img.trim()).filter(Boolean);
+                }
+            }
+
+            let galleryHtml = '';
+            if (imagesArray && imagesArray.length > 0) {
+                galleryHtml += `
+                    <img src="${car.image}" class="thumb-active" 
+                         onclick="changeImage(this, '${car.image}')" 
+                         alt="Главное фото" style="width: 80px; height: 56px; object-fit: cover; cursor: pointer; border: 2px solid transparent; border-radius: 6px; opacity: 0.8; transition: all 0.2s;">
+                `;
+                imagesArray.forEach(imgUrl => {
+                    if (imgUrl && imgUrl !== car.image) {
+                        galleryHtml += `
+                            <img src="${imgUrl}" 
+                                 onclick="changeImage(this, '${imgUrl}')" 
+                                 alt="Фото галереи" style="width: 80px; height: 56px; object-fit: cover; cursor: pointer; border: 2px solid transparent; border-radius: 6px; opacity: 0.8; transition: all 0.2s;">
+                        `;
+                    }
+                });
+            }
+
+            container.innerHTML = `
+                <div class="car-detail-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 16px;">
+                    <div class="car-detail-media">
+                        <div class="main-image-wrapper" style="border-radius: 12px; overflow: hidden; background: #f5f5f5; aspect-ratio: 16/10;">
+                            <img id="mainImage" src="${car.image || 'img/no-photo.jpg'}" alt="${car.brand} ${car.model}" style="width: 100%; height: 100%; object-fit: cover; transition: all 0.15s ease;">
+                        </div>
+                        <div class="car-detail-thumbs" style="display: flex; gap: 12px; margin-top: 16px; overflow-x: auto; padding-bottom: 8px;">
+                            ${galleryHtml}
+                        </div>
+                    </div>
+
+                    <div class="car-detail-info">
+                        <div class="status-badge stock" style="display: inline-block; margin-bottom:12px; font-size:13px; padding:6px 14px;">${car.status || 'В наличии'}</div>
+                        <h1 style="font-size: 36px; font-weight: 700; margin: 0 0 8px;">${car.brand} ${car.model}</h1>
+                        <p style="color: var(--text-secondary); font-size: 15px; margin-bottom: 24px;">Год: <strong>${car.year}</strong> | VIN: <strong>${car.vin || 'По запросу'}</strong></p>
+                        
+                        <div class="car-detail-price" style="font-size: 34px; font-weight: 800; color: var(--color-primary); margin-bottom: 32px;">
+                            ${Number(car.price).toLocaleString('ru-RU')} ₽
+                        </div>
+
+                        <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Характеристики модели</h3>
+                        <div class="specs-table" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 36px; background: var(--bg-surface-hover); padding:20px; border-radius:12px;">
+                            <div>Двигатель: <strong>${car.specs}</strong></div>
+                            <div>Мощность: <strong>${car.horsepower ? car.horsepower + ' л.с.' : '—'}</strong></div>
+                            <div>Пробег: <strong>${Number(car.mileage).toLocaleString('ru-RU')} км</strong></div>
+                            <div>Топливо: <strong>${car.fuel || 'Бензин'}</strong></div>
+                            <div>Трансмиссия: <strong>${car.transmission || 'Автомат'}</strong></div>
+                            <div>Цвет: <strong>${car.color || 'Индивидуальный'}</strong></div>
+                        </div>
+
+                        <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 12px;">Описание дилера</h3>
+                        <p style="line-height: 1.6; color: var(--text-secondary); margin-bottom: 36px; font-size:15px; white-space: pre-line;">${car.desc}</p>
+
+                        <div>
+                            <a href="test-drive.html?carId=${car.id}&carName=${encodeURIComponent(car.brand + ' ' + car.model)}" class="btn btn-primary btn-lg" style="display: inline-flex; align-items: center; gap: 10px; padding:16px 32px;">
+                                Записаться на тест-драйв
+                                <span class="material-symbols-outlined">calendar_month</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function changeImage(el, src) {
+            const mainImg = document.getElementById('mainImage');
+            if(mainImg) {
+                mainImg.style.opacity = '0.3';
+                setTimeout(() => {
+                    mainImg.src = src;
+                    mainImg.style.opacity = '1';
+                }, 100);
+            }
+            document.querySelectorAll('.car-detail-thumbs img').forEach(img => img.classList.remove('thumb-active'));
+            el.classList.add('thumb-active');
+        }
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const carId = urlParams.get('id');
+            try {
+                if (carId) {
+                    renderCarDetail(normalizeCar(await AutoPremiumAPI.getCar(carId)));
+                } else {
+                    const response = await AutoPremiumAPI.getCars({ limit: 1 });
+                    renderCarDetail(response.data && response.data[0] ? normalizeCar(response.data[0]) : null);
+                }
+            } catch (err) { renderCarDetail(null); }
+        });
+        window.changeImage = changeImage;
+    </script>
+</body>
+</html>

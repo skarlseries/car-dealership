@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="light" lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запись на тест-драйв - AutoPremium</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+</head>
+<body>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <span class="material-symbols-outlined">directions_car</span>
+                AutoPremium
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Главная</a>
+                <a href="catalog.html">Каталог</a>
+                <a href="test-drive.html" class="active">Тест-драйв</a>
+                <a href="dashboard.html">Админ</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggle" class="btn btn-secondary btn-sm" style="padding: 8px; border-radius: 50%; width: 40px; height: 40px;">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+                <a href="login.html" class="btn btn-primary btn-sm">Войти</a>
+                <button class="mobile-menu-btn" aria-label="Меню">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu-overlay"></div>
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <span class="logo" style="font-size: 20px;">AutoPremium</span>
+            <button class="mobile-menu-close">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <nav class="mobile-menu-links">
+            <a href="index.html">Главная</a>
+            <a href="catalog.html">Каталог</a>
+            <a href="test-drive.html" class="active">Тест-драйв</a>
+            <a href="dashboard.html">Админ-панель</a>
+            <hr style="border-color: rgba(26, 28, 28, 0.06); margin: 8px 0;">
+            <a href="login.html">Войти</a>
+            <a href="register.html">Регистрация</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="test-drive-page">
+            <div class="test-drive-info">
+                <h1>Тест-драйв<br><span style="color: var(--color-primary);">без границ</span></h1>
+                <p>
+                    Почувствуйте мощь и управляемость автомобиля на специально 
+                    подготовленных треках. Наши эксперты помогут вам настроить 
+                    все параметры для идеального вождения.
+                </p>
+                <div class="test-drive-benefits">
+                    <div class="benefit">
+                        <div class="icon"><span class="material-symbols-outlined">speed</span></div>
+                        <div class="text"><strong>Профессиональные инструкторы</strong><br>Сопровождение опытных пилотов</div>
+                    </div>
+                    <div class="benefit">
+                        <div class="icon"><span class="material-symbols-outlined">route</span></div>
+                        <div class="text"><strong>Специальные трассы</strong><br>Маршруты для полного раскрытия потенциала</div>
+                    </div>
+                    <div class="benefit">
+                        <div class="icon"><span class="material-symbols-outlined">schedule</span></div>
+                        <div class="text"><strong>Гибкий график</strong><br>Выберите удобное время и дату</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-drive-form">
+                <h2 class="text-headline-md" style="margin-bottom: 4px;">Записаться на тест-драйв</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 14px;">
+                    Заполните форму и мы свяжемся с вами для подтверждения
+                </p>
+                
+                <div id="formContainer">
+                    <form id="testDriveForm">
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="tdName">Имя *</label>
+                                <input type="text" id="tdName" class="input-field" placeholder="Иван Петров" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="tdPhone">Телефон *</label>
+                                <input type="tel" id="tdPhone" class="input-field phone-mask" placeholder="+7 (___) ___-__-__" required>
+                            </div>
+                        </div>
+                        <div class="input-group" style="margin-top: 16px;">
+                            <label for="tdEmail">Email</label>
+                            <input type="email" id="tdEmail" class="input-field" placeholder="ivan@example.com">
+                        </div>
+                        <div class="form-row" style="margin-top: 16px;">
+                            <div class="input-group">
+                                <label for="tdDate">Дата *</label>
+                                <input type="date" id="tdDate" class="input-field" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="tdTime">Время *</label>
+                                <input type="time" id="tdTime" class="input-field" required>
+                            </div>
+                        </div>
+                        <div class="input-group" style="margin-top: 16px;">
+                            <label for="tdCar">Интересующий автомобиль</label>
+                            <select id="tdCar" class="input-field">
+                                <option value="">Выберите модель</option>
+                                <option value="1">Porsche 911 Carrera S</option>
+                                <option value="2">BMW M8 Competition</option>
+                                <option value="3">Mercedes-Benz G 63 AMG</option>
+                                <option value="4">BMW X5 M Performance</option>
+                                <option value="5">Audi RS7 Sportback</option>
+                                <option value="6">Porsche Taycan Turbo S</option>
+                                <option value="7">Mercedes-Benz S 580 Maybach</option>
+                                <option value="8">Audi Q8 e-tron</option>
+                                <option value="9">Porsche Cayenne GTS</option>
+                            </select>
+                        </div>
+                        <div class="input-group" style="margin-top: 16px;">
+                            <label for="tdMessage">Комментарий</label>
+                            <textarea id="tdMessage" class="input-field" rows="3" placeholder="Ваши пожелания..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 24px;">
+                            Отправить заявку
+                        </button>
+                        <p style="font-size: 12px; color: var(--text-secondary); text-align: center; margin-top: 12px;">
+                            * Нажимая на кнопку, вы соглашаетесь с политикой обработки данных
+                        </p>
+                    </form>
+                </div>
+                
+                <div id="successMessage" style="display: none; text-align: center; padding: 32px 16px;">
+                    <div style="font-size: 64px; color: #22c55e; margin-bottom: 16px;">
+                        <span class="material-symbols-outlined" style="font-size: 64px;">check_circle</span>
+                    </div>
+                    <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">Заявка отправлена!</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 24px;">Мы свяжемся с вами в ближайшее время для подтверждения записи на тест-драйв.</p>
+                    <button onclick="resetForm()" class="btn btn-primary">Отправить еще одну заявку</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer" style="margin-top: 0;">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">AutoPremium</div>
+                    <p>Премиальный дилер BMW и эксклюзивных автомобилей. Высокое качество инженерии и безупречный сервис.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Каталог</h4>
+                    <div class="footer-links">
+                        <a href="catalog.html">Все модели</a>
+                        <a href="test-drive.html">Тест-драйв</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Правовая информация</h4>
+                    <div class="footer-links">
+                        <a href="#">Политика конфиденциальности</a>
+                        <a href="#">Условия использования</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Контакты</h4>
+                    <div class="footer-links">
+                        <span style="display: flex; align-items: center; gap: 8px;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">phone</span>
+                            +7 (800) 123-45-67
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 8px;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">email</span>
+                            info@autopremium.ru
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">© 2024 AutoPremium. Инженерия высшего класса.</div>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/phone-mask.js"></script>
+    <script>
+        async function loadCarOptions() {
+            const select = document.getElementById('tdCar');
+            if (!select) return;
+            try {
+                const response = await AutoPremiumAPI.getCars({ limit: 50 });
+                select.innerHTML = '<option value="">Выберите модель</option>';
+                (response.data || []).forEach(car => {
+                    const opt = document.createElement('option');
+                    opt.value = car.id;
+                    opt.textContent = `${car.brand} ${car.model}`;
+                    select.appendChild(opt);
+                });
+            } catch (err) {
+                console.warn('Не удалось загрузить список авто:', err);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.getElementById('tdDate');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.min = today;
+                dateInput.value = today;
+            }
+
+            loadCarOptions().then(() => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const carId = urlParams.get('car');
+                if (carId) {
+                    const select = document.getElementById('tdCar');
+                    if (select) select.value = carId;
+                }
+            });
+        });
+
+        document.getElementById('testDriveForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const carSelect = document.getElementById('tdCar');
+            const carId = carSelect.value;
+            const carName = carSelect.selectedOptions[0]?.textContent;
+
+            const payload = {
+                name: document.getElementById('tdName').value.trim(),
+                phone: document.getElementById('tdPhone').value.trim(),
+                email: document.getElementById('tdEmail').value.trim(),
+                date: document.getElementById('tdDate').value,
+                time: document.getElementById('tdTime').value,
+                message: document.getElementById('tdMessage').value.trim(),
+                type: 'Тест-драйв'
+            };
+
+            if (carId) {
+                payload.carId = parseInt(carId, 10);
+                payload.carName = carName;
+            }
+
+            try {
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Отправка...';
+                }
+                await AutoPremiumAPI.submitTestDrive(payload);
+                document.getElementById('formContainer').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            } catch (err) {
+                alert(err.message || 'Не удалось отправить заявку');
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Отправить заявку';
+                }
+            }
+        });
+
+        function resetForm() {
+            document.getElementById('testDriveForm').reset();
+            document.getElementById('formContainer').style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
+
+            const dateInput = document.getElementById('tdDate');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.min = today;
+                dateInput.value = today;
+            }
+        }
+    </script>
+</body>
+</html>

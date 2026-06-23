@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html class="light" lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoPremium | Каталог автомобилей</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap">
+    <style>
+        .catalog-header { padding: 40px 0 24px; }
+        .catalog-header h1 { font-size: 32px; font-weight: 700; }
+        .catalog-header p { color: var(--text-secondary); font-size: 18px; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <span class="material-symbols-outlined">directions_car</span>
+                AutoPremium
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Главная</a>
+                <a href="catalog.html" class="active">Каталог</a>
+                <a href="test-drive.html">Тест-драйв</a>
+                <a href="dashboard.html">Админ</a>
+            </nav>
+            <div class="header-actions">
+                <button id="themeToggle" class="btn btn-secondary btn-sm" style="padding: 8px; border-radius: 50%; width: 40px; height: 40px;">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+                <a href="login.html" class="btn btn-primary btn-sm">Войти</a>
+                <button class="mobile-menu-btn" aria-label="Меню">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu-overlay"></div>
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <span class="logo" style="font-size: 20px;">AutoPremium</span>
+            <button class="mobile-menu-close">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <nav class="mobile-menu-links">
+            <a href="index.html">Главная</a>
+            <a href="catalog.html" class="active">Каталог</a>
+            <a href="test-drive.html">Тест-драйв</a>
+            <a href="dashboard.html">Админ-панель</a>
+            <hr style="border-color: rgba(26, 28, 28, 0.06); margin: 8px 0;">
+            <a href="login.html">Войти</a>
+            <a href="register.html">Регистрация</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="catalog-header">
+            <h1>Майдан: 9 автопарк</h1>
+            <p>Выберите свой идеальный Luxury Performance</p>
+        </div>
+
+        <div class="filters-bar">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Поиск по марке или модели...">
+            <select id="brandFilter">
+                <option value="">Все марки</option>
+                <option value="Porsche">Porsche</option>
+                <option value="BMW">BMW</option>
+                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                <option value="Audi">Audi</option>
+            </select>
+            <select id="yearFilter">
+                <option value="">Все годы</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+            </select>
+            <select id="priceFilter">
+                <option value="100000000">Любая цена</option>
+                <option value="10000000">до 10 млн ₽</option>
+                <option value="15000000">до 15 млн ₽</option>
+                <option value="20000000">до 20 млн ₽</option>
+                <option value="30000000">до 30 млн ₽</option>
+            </select>
+        </div>
+
+        <div class="results-info">
+            Найдено <span id="resultCount">0</span> автомобилей
+        </div>
+
+        <div class="grid grid-cols-3" id="catalogGrid"></div>
+    </div>
+
+    <section class="section" style="background: var(--bg-surface-container-low);">
+        <div class="container">
+            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <h2 class="section-title">Запись на тест-драйв</h2>
+                <p class="section-subtitle">Почувствуйте мощность и управляемость автомобиля лично</p>
+                <a href="test-drive.html" class="btn btn-primary btn-lg">Записаться на тест-драйв</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer" style="margin-top: 0;">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">AutoPremium</div>
+                    <p>Эксклюзивный дилер премиальных автомобилей. Высочайшие стандарты качества и обслуживания в каждой детали.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Каталог</h4>
+                    <div class="footer-links">
+                        <a href="catalog.html">Новые поступления</a>
+                        <a href="catalog.html">Автомобили с пробегом</a>
+                        <a href="catalog.html">Специальные предложения</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Услуги</h4>
+                    <div class="footer-links">
+                        <a href="test-drive.html">Тест-драйв в Москве</a>
+                        <a href="#">Программа Trade-In</a>
+                        <a href="#">Сервисное обслуживание</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Контакты</h4>
+                    <div class="footer-links">
+                        <span style="display: flex; align-items: center; gap: 8px;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">location_on</span>
+                            Москва, Кутузовский пр-т, 1
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 8px;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">phone</span>
+                            +7 (495) 000-00-00
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">© 2024 AutoPremium. Инженерия высшего класса.</div>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/catalog.js"></script>
+</body>
+</html>
